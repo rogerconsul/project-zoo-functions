@@ -341,3 +341,4 @@ module.exports = {
     child: 20.99,
   },
 };
+// este é um comentário pra permitir o PR. Não leia isto!
