@@ -23,9 +23,11 @@ function calculateEntry(entrants) {
   if (!entrants || Object.keys(entrants).length === 0) { // Agradecimentos ao Isaac por ter dado a dica do object.keys
     return 0;
   }
+  let preco = 0;
+  preco += countEntrants(entrants).child * 20.99;
+  preco += countEntrants(entrants).adult * 49.99;
+  preco += countEntrants(entrants).senior * 24.99;
+  return preco;
 }
-const asd = {};
-
-console.log(asd.length);
 
 module.exports = { calculateEntry, countEntrants };
