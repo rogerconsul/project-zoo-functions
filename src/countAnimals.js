@@ -12,11 +12,10 @@ function countAnimals(animal) {
   if (!animal.sex) { // mentoria do Lucas me ajudou a definir isto
     const bixos = species.find((bixo) => bixo.name === animal.specie);
     return bixos.residents.length;
-  }
-  const quantidade = species.find((serVivo) => serVivo.name === animal.specie).filter(
-    (cavalo) => cavalo.sex === animal.sex,
-  );
-  return quantidade.length;
-}
+  } // agradecimentos especiais ao Joao Kruschewsky que me ajudou na sala de estudos a entender como trabalhar o array
+  const serVivos = species.find((serVivo) => serVivo.name === animal.specie).residents;
+  const teste = serVivos.filter((sexo) => sexo.sex === animal.sex);
 
+  return teste.length;
+}
 module.exports = countAnimals;
