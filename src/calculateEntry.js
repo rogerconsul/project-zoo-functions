@@ -20,7 +20,12 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  if (!entrants || Object.keys(entrants).length === 0) { // Agradecimentos ao Isaac por ter dado a dica do object.keys
+    return 0;
+  }
 }
+const asd = {};
+
+console.log(asd.length);
 
 module.exports = { calculateEntry, countEntrants };
