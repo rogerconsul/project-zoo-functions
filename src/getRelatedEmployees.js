@@ -8,6 +8,7 @@ const isManager = ((id) => employees.some((emplo) => (
 
 // O erro eu consegui resolver sozinho.
 // A parte de retornar o array eu precisei da ajuda da sala de estudos. Acho que consegui entender :|
+// Agradecimentos ao João Kruschewsky e ao Thiago Muniz por resolver a parte do responsavelPor
 function getRelatedEmployees(managerId) {
   if (!isManager(managerId)) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
