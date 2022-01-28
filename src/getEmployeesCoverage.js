@@ -1,19 +1,20 @@
-const { employees } = require('../data/zoo_data');
+const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function getEmployeesCoverage(input) {
   if (!input) {
-    const objetoResultado = {};
     const inputInvalido = employees.map((funcionario) => {
-      objetoResultado.id = `${funcionario.id}`;
-      objetoResultado.fullName = `${funcionario.firstName} ${funcionario.lastName}`;
-      objetoResultado.species = [`${Object.values(funcionario.responsibleFor)}`];
-      objetoResultado.locations = ['xablasu'];
+      const objetoResultado = {
+        id: `${funcionario.id}`,
+        fullName: `${funcionario.firstName} ${funcionario.lastName}`,
+        species: Object.values(funcionario.responsibleFor)
+          .map((id) => species.find((nome) => nome.id === id).name),
+        locations: ['xablasu'],
+      };
       return objetoResultado;
     });
     return inputInvalido;
   }
-
   if (input) {
     const descobrePeao = employees.find((peao) => peao.id === input.id || peao
       .firstName === input.name || peao.lastName === input.name);
@@ -22,6 +23,6 @@ function getEmployeesCoverage(input) {
 }
 
 console.log(getEmployeesCoverage());
-console.log(getEmployeesCoverage({ name: 'Sharonda' }));
+// console.log(getEmployeesCoverage({ name: 'Sharonda' }));
 
 module.exports = getEmployeesCoverage;
