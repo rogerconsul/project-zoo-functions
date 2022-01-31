@@ -1,6 +1,10 @@
 const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+// function locais(entrada) {
+//   const quaisAnimais = entrada.responsibleFor;
+//   const animais = species.filter(quaisAnimais === entrada) 
+// }
 function inputInvalido(input) {
   if (!input) {
     const invalido = employees.map((funcionario) => {
@@ -9,7 +13,8 @@ function inputInvalido(input) {
         fullName: `${funcionario.firstName} ${funcionario.lastName}`,
         species: Object.values(funcionario.responsibleFor)
           .map((id) => species.find((nome) => nome.id === id).name),
-        locations: ['xablasu'],
+        locations: Object.values(funcionario.responsibleFor)
+        .map((id) => species.find((nome) => nome.id === id).location),
       };
       return objetoResultado;
     });
@@ -26,7 +31,8 @@ function inputValido(input) {
       fullName: `${descobrePeao.firstName} ${descobrePeao.lastName}`,
       species: Object.values(descobrePeao.responsibleFor)
         .map((id) => species.find((nome) => nome.id === id).name),
-      locations: ['xablasu'],
+      locations: Object.values(descobrePeao.responsibleFor)
+      .map((id) => species.find((nome) => nome.id === id).location),
     };
   }
 }
@@ -40,7 +46,7 @@ function getEmployeesCoverage(input) {
   }
 }
 
-// console.log(getEmployeesCoverage());
-// console.log(getEmployeesCoverage({ name: 'Sharonda' }));
+console.log(getEmployeesCoverage());
+console.log(getEmployeesCoverage({ name: 'Sharonda' }));
 
 module.exports = getEmployeesCoverage;
